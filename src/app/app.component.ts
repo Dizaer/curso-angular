@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  todoData= TODO_DATA;
+  todoData = TODO_DATA;
 
   constructor(){
 
