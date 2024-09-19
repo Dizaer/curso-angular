@@ -35,4 +35,17 @@ export class TodoComponent {
         return NTodo.PriorityText.HIGH;
     }
   }
+
+  get progress() {
+    return this.todoData.progress * 100;
+  }
+
+  get range() {
+    if (this.progress > 0 && this.progress <= NTodo.Range.LOW){
+      return NTodo.RangeText.LOW;
+    } else if (this.progress > NTodo.Range.LOW && this.progress <= NTodo.Range.MEDIUM){
+      return NTodo.RangeText.MEDIUM;
+    }
+    return NTodo.RangeText.HIGH;
+  }
 }

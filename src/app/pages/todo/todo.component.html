@@ -39,11 +39,11 @@
         <p>Fecha límite: {{todoData.deadLine}}</p>
     </div>
     <section class="progressbar-container">
-        <div class="progressbar">
-            <div class="progressbar__fill">
+        <div class="progressbar" [attr.data-progress-range]="range">
+            <div class="progressbar__fill" [ngStyle]="{'width': progress + '%'}">
             </div>
         </div>
-        <span>{{todoData.progress}} %</span> 
+        <span>{{progress}} %</span> 
     </section>  
 } @else {
     No hay datos
