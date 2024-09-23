@@ -5,8 +5,8 @@
 
     ){
     <app-todo 
+      #todoRef
       [todoData]="todo" 
-
       (onClickIcon)="getTodoInfo($event)">
     </app-todo>
   } @empty {
@@ -16,4 +16,5 @@
 
 <br>
 <button (click)="orderData()">Ordenar</button>
+<button (click)="addTodo()">Agregar todo</button>
 <button (click)="selectTodo()">Seleccionar todo</button>
