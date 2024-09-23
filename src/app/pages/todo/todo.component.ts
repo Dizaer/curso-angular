@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, LOCALE_ID, Output} from '@angular/core';
 import { NTodo } from '../../models/todo.model';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData} from '@angular/common';
+import spanish from '@angular/common/locales/es';
+registerLocaleData(spanish);
 
 
 @Component({
@@ -8,6 +10,11 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [
     CommonModule
+  ],
+  providers: [
+    {
+      provide: LOCALE_ID, useValue: 'es'
+    }
   ],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
