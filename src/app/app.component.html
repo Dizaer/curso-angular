@@ -1,20 +1,24 @@
 <div class="todo-container">
-  @for (
-      todo of todoData;
-      track todo.id;
 
-    ){
-    <app-todo 
+    <!-- <app-todo 
+      *ngIf="todoData"
       #todoRef
-      [todoData]="todo" 
-      (onClickIcon)="getTodoInfo($event)">
-    </app-todo>
-  } @empty {
-    No hay datos
-  }
+      [todoData]="todoData" 
+      (onClickIcon)="todoData = null"
+    >
+      <app-input #inputRef placeholder="Nombres"></app-input>
+      <app-input #inputRef placeholder="Apellidos"></app-input>
+      <app-input #inputRef placeholder="Edad" type="number"></app-input>
+      <div class="comment" style="margin-top: 1rem;">
+        <textarea rows="5"></textarea>
+      </div>
+    </app-todo> -->
+    <router-outlet></router-outlet>
+    
 </div>
 
 <br>
-<button (click)="orderData()">Ordenar</button>
-<button (click)="addTodo()">Agregar todo</button>
-<button (click)="selectTodo()">Seleccionar todo</button>
+<br>
+<button (click)="router.navigate([''])">Home</button>
+<button (click)="router.navigate(['/todo'])">Todo</button>
+<button (click)="change()">Modificar</button>

@@ -1,7 +1,10 @@
-import { Component, EventEmitter, Input, LOCALE_ID, Output} from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, EventEmitter, Input, LOCALE_ID, OnChanges, OnDestroy, OnInit, Output, QueryList, SimpleChanges, ViewChild, viewChild} from '@angular/core';
 import { NTodo } from '../../models/todo.model';
 import { CommonModule, registerLocaleData} from '@angular/common';
 import spanish from '@angular/common/locales/es';
+import { InputComponent } from '../../components/input/input.component';
+import { TODO_DATA } from '../../../assets/todo';
+
 registerLocaleData(spanish);
 
 
@@ -19,10 +22,54 @@ registerLocaleData(spanish);
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })
-export class TodoComponent {
-  @Input({ required: true}) todoData!: NTodo.TodoData;
+export class TodoComponent implements OnChanges, OnInit, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy{
+
+  constructor() {
+    console.log('constructor1');
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('ngOnChanges');
+  }
+
+  ngOnInit(): void {
+    console.log('ngOnInit');
+  }
+
+  ngDoCheck(): void {
+    console.log('ngDoCheck');
+    
+  }
+
+  ngAfterContentInit(): void {
+    console.log('ngAfterContentInit');
+  }
+
+  ngAfterContentChecked(): void {
+    const input = this.projectedContent?.nativeElement.querySelector('input');
+    input?.focus();  
+    console.log('ngAfterContentChecked');  
+  }
+
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit', this.divElement);
+  }
+
+  ngAfterViewChecked(): void {
+    console.log('ngAfterViewChecked');
+  }
+
+  ngOnDestroy(): void {
+    console.log('ngOnDestroy', this.divElement);
+  }
+
+  @Input({ required: true}) todoData: NTodo.TodoData = TODO_DATA[0];
 
   @Output() onClickIcon = new EventEmitter<NTodo.TodoData>();
+
+  @ContentChild(InputComponent, {read: ElementRef}) projectedContent?: ElementRef<HTMLElement>;
+
+  @ViewChild('divRef') divElement?: ElementRef;
 
   get priority(): string{
     switch (this.todoData.priority) {
@@ -46,5 +93,8 @@ export class TodoComponent {
       return NTodo.RangeText.MEDIUM;
     }
     return NTodo.RangeText.HIGH;
+  }
+
+  selectContent() {
   }
 }
