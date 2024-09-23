@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  todoData = TODO_DATA;
+  todoData = TODO_DATA.filter(item=> item.id<3);
 
   constructor(){
 
@@ -29,5 +29,10 @@ export class AppComponent {
 
   orderData(){
     this.todoData.sort((a,b)=>a.priority - b.priority)
+  }
+
+  selectTodo(){
+    const todo =document.querySelectorAll('app-todo');
+    console.log(todo);
   }
 }
