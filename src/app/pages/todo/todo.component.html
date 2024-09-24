@@ -1,16 +1,6 @@
 <div
-    class="card-container"
-    [ngClass]="
-    {
-        'first': first,
-        'last': last,
-        'odd': odd,
-        'even': even
-    }
-    "
->
-@if (todoData) {
-    {{first}}
+    class="card-container">
+
     <span class="icon-close" (click)="onClickIcon.emit(todoData)">x</span>
     <div class="card-body">
         <div class="card-content">
@@ -18,6 +8,11 @@
             <p>{{todoData.description}}</p>
         </div>
     </div>
+    <section style="background-color: gray;">
+        <ng-content select=".name, .last-name,"></ng-content>
+        <ng-content></ng-content>
+        
+    </section>
     <div class="card-content pills-container">
         <p>Estado: 
         <span
@@ -44,10 +39,6 @@
             </div>
         </div>
         <span>{{todoData.progress| percent }}  </span> 
-    </section>  
-} @else {
-    No hay datos
-}
-             
+    </section>       
 </div>
 
