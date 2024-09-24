@@ -1,20 +1,11 @@
 <app-header></app-header>
 <div class="todo-container">
-    <app-todo
-        [todoData]="todos[0]"
-        (onClickIcon)="getTodoInfo($event)"
-    >
-    </app-todo>
+    @for (item of todos.data; track $index){
+        <app-todo
+            [todoData]="item"
+            (onClickIcon)="getTodoInfo($event)"
+        >
+        </app-todo>
+    }
 </div>
-<div class="todo-container">
-    <app-todo
-    class="orange-color"
-        [todoData]="todos[0]"
-        (onClickIcon)="getTodoInfo($event)"
-    >
-    </app-todo>
-</div>
-<br><br>
-<div class="card-container">
-    card-container
-</div>
+
