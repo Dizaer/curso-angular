@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "curso-angular": {
+    "angular-17-course": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/curso-angular",
+            "outputPath": "dist/angular-17-course",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -31,12 +31,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -66,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "curso-angular:build:production"
+              "buildTarget": "angular-17-course:build:production"
             },
             "development": {
-              "buildTarget": "curso-angular:build:development"
+              "buildTarget": "angular-17-course:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -77,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "curso-angular:build"
+            "buildTarget": "angular-17-course:build"
           }
         },
         "test": {
@@ -100,8 +95,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": false
   }
 }
