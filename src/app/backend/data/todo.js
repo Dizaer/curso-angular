@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 module.exports = [
     {
       "title": "Leer documentación técnica",
