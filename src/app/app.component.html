@@ -1,38 +1,7 @@
-<div [appHighlighted]="false">Header</div>
-<br><br>
-<button (click)="highlightedDirective.onToggle()">Resaltar</button>
-<br><br>
-@if (todoData) {
-  <div class="todo-container">
-    <app-todo 
-      #todoRef
-      [appHighlighted]="false"
-      (onToggleHighlighted)="onToggleHighlighted($event)"
-      [todoData]="todoData" 
-      (onClickIcon)="getTodoInfo($event)"
+<div class="todo-container">
+    <app-todo
+        [todoData]="todos[0]"
+        (onClickIcon)="getTodoInfo($event)"
     >
-      <ng-container *appNgxUnless="todoData.hidden">
-        <div class="name">Alex</div>
-        <div class="last-name">Ramirez</div>
-        <div projected-content='todo'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit labore eos nisi praesentium quisquam itaque doloremque, porro veritatis sint expedita et modi pariatur sequi vitae animi culpa, veniam officiis mollitia.</div>
-      </ng-container>
     </app-todo>
-</div> 
-} @else {
-  <ng-container *ngTemplateOutlet="noTodo; context: {$implicit: 'Alex', lastName: 'Ramirez'}"></ng-container>
-}
-
-<ng-template #noTodo let-name let-lastName="lastName">
-  <div>
-    No hay elementos
-  </div>
-  <div>
-    nombre: {{name}}
-  </div>
-  <div>
-    Apellido: {{lastName}}
-  </div>
-</ng-template>
-
-
-<!-- <button (click)="orderData()">Ordenar</button> -->
+</div>
